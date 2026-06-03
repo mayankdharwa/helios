@@ -6,6 +6,8 @@
 
 <2–3 line state summary: what's been locked, what's blocking, what was last touched. Points at exploration / code-review / OPEN-QUESTIONS docs; does not restate substance.>
 
+Scratch: <transient context the user consciously parked here — one line, no rationale>  <!-- optional; up to 2 single-line `Scratch:` entries (stacked, one per line); written by procedures/checkpoint.md or by hand. Omit the line(s) entirely when empty. -->
+
 Next up: <next concrete step — next unit / next section>.
 
 ## Progress

@@ -84,7 +84,7 @@ Pick the next section in this order:
 
 2. **Otherwise pick the next `⏳` section by `§` order.** Remove its row from Pending / Done, add a parent row to Active with `Tests` = 🚧, `Code` = 🚧, `Review` = ⏳, and expand its sub-rows from the top-level headings in `testing/<section>.md` — one sub-row per heading; cells start at `Tests` = ⏳, `Code` = ⏳, `Review` = ⏳, `Pointer` = —. The `Review` column flips on the first auto-launch return (SKILL.md "Auto-launch protocol").
 
-**5c. Update `## Current focus`.** First, invoke `procedures/checkpoint.md` on `build/PROGRESS.md` (per its "Auto-trigger from `procedures/section-archive.md`" section — lift-and-classify scope only, no rewrite). Anything liftable in the about-to-be-erased focus block gets routed to its canonical home before the rewrite below overwrites it. Then branch on what 5b actually did — three cases:
+**5c. Update `## Current focus`.** First, invoke `procedures/checkpoint.md` on `build/PROGRESS.md` (per its "Auto-trigger from `procedures/section-archive.md`" section — steps 2 + 3 only, no rewrite, no table-drift). Anything liftable in the about-to-be-erased focus block gets routed to its canonical home before the rewrite below overwrites it. Then branch on what 5b actually did — three cases:
 
 - **5b promoted a section** (resumed a fully-cleared ⏸ via 5b.1, or started a fresh ⏳ via 5b.2):
   - Rewrite the active-section block (name + short qualifier + 2–3 line state summary + next intra-section step) to reflect the newly-promoted section.

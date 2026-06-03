@@ -24,8 +24,8 @@ Two entry points:
 
 Read the full `PROGRESS.md`. Locate `## Current focus`. The template shape it must collapse to is fixed by the file:
 
-- `build/PROGRESS.md` → `templates/progress-build.md`: `**<section-name>** — <qualifier>` + 2–3 line state summary + optional `Paused:` line + `Next up:` line.
-- Topic / references `PROGRESS.md` → `templates/progress-topic.md`: `**<unit-name>** — <qualifier>` + 2–3 line state summary + `Next up:` line.
+- `build/PROGRESS.md` → `templates/progress-build.md`: `**<section-name>** — <qualifier>` + 2–3 line state summary + up to 2 single-line `Scratch:` entries (optional) + optional `Paused:` line + `Next up:` line.
+- Topic / references `PROGRESS.md` → `templates/progress-topic.md`: `**<unit-name>** — <qualifier>` + 2–3 line state summary + up to 2 single-line `Scratch:` entries (optional) + `Next up:` line.
 
 ### 2. Classify the focus block
 
@@ -33,7 +33,7 @@ Walk every sentence / bullet beyond the prescribed shape. Bucket each:
 
 - **Has a canonical home.** Route to its destination:
   - Concrete finding about section code → `build/code-review/<section>.md`. The Coding Agent **cannot** create findings (Review-Agent-owned per `reference/doc-ownership.md`). Surface to the user; options are (a) leave in place and let the next Review Agent auto-launch pick it up, (b) drop the line if the finding is obsolete. Do not write to the code-review file from this procedure.
-  - Locked decision → `DECISIONS.md`. Apply the three lift criteria (`reference/lift-criteria.md`); confirm with user before appending (DECISIONS is confirm-before-edit per `reference/doc-ownership.md`). Use `templates/decisions.md` shape; `Source:` is `[<PROGRESS path> Current focus, <YYYY-MM-DD>]`.
+  - Locked decision → `DECISIONS.md`. Apply the three lift criteria (`reference/lift-criteria.md`); confirm with user before appending (DECISIONS is confirm-before-edit per `reference/doc-ownership.md`). Use `templates/decisions.md` shape verbatim — `Lifted:` carries today's date, `Source:` is `[<PROGRESS path> Current focus]` (no date inside the bracket; the `Lifted:` field carries it).
   - Open question or blocker → `OPEN-QUESTIONS.md` via `procedures/open-questions.md` Add. OPEN-QUESTIONS adds don't need confirmation.
   - Pointer at a doc/file that already captures the substance → drop (the pointer remains in the residual summary if the user still wants it visible).
 - **Pure scratch, still load-bearing.** Short context the user consciously parked here (e.g., "ping infra about retention policy before PR"). Keep — but trim to a single line.
@@ -53,7 +53,7 @@ Strip lifted lines from Current focus as each lift lands.
 
 ### 4. Rewrite Current focus to template shape
 
-Collapse the residual to its template's prescribed shape (step 1). Keep load-bearing pure-scratch lines as one or two single-line bullets under the state summary, each prefixed `Scratch:` — explicit so the next checkpoint can re-classify them. Omit the `Scratch:` block entirely when empty.
+Collapse the residual to its template's prescribed shape (step 1). Keep load-bearing pure-scratch as single-line `Scratch:` entries under the state summary, stacked one per line (up to 2) — placement, prefix, and the 2-line cap are defined by the template (`templates/progress-build.md` / `templates/progress-topic.md`). The explicit `Scratch:` prefix is load-bearing: the next checkpoint pass uses it to recognise and re-classify these lines. Omit the entries entirely when empty.
 
 ### 5. Table-drift pass
 
@@ -71,9 +71,12 @@ Three to five lines: lift count by destination, scratch lines kept vs dropped, f
 
 ## Auto-trigger from `procedures/section-archive.md`
 
-Invoked at step 5c **before** the active-section block is rewritten. Target: `build/PROGRESS.md`.
+Invoked at step 5c **before** the active-section block is rewritten. Target is always `build/PROGRESS.md` at this trigger — `references/PROGRESS.md` and exploration topic PROGRESS files are only reachable via user invocation.
 
-Scope reduces to steps 2 + 3 + 5 only: section-archive's 5c immediately rewrites the active-section block per its own three-case branch, so step 4's rewrite is skipped. The lift-and-classify pass exists precisely to rescue liftable content from the rewrite — anything not lifted is lost when 5c overwrites.
+Scope reduces to steps 2 + 3 only — lift-and-classify. Skipped:
+
+- **Step 4 (rewrite)**: section-archive's 5c immediately rewrites the active-section block per its own three-case branch, so a checkpoint rewrite would be overwritten. The lift-and-classify pass exists precisely to rescue liftable content from that rewrite — anything not lifted is lost when 5c overwrites.
+- **Step 5 (table-drift pass)**: section-archive's 5a/5b just intentionally mutated the Active and Pending / Done tables (moved the closing row, promoted or resumed the next section, materialised sub-rows). A drift pass on freshly-mutated tables conflates intentional change with drift and disrupts the archive flow. Table-drift is a user-invoked concern.
 
 The Coding-Agent-can't-create-findings constraint (step 2) is tighter at this trigger: by definition the section is about to leave Active, so the next Review Agent auto-launch won't fire on it. A code-review-bound line at archive-time is functionally a drop unless the user wants to spawn a final Review Agent before archive — surface the choice.
 
@@ -85,7 +88,7 @@ The Coding-Agent-can't-create-findings constraint (step 2) is tighter at this tr
 
 ## Postconditions
 
-- `## Current focus` conforms to its template's shape (length, ordering, markers, optional `Scratch:` bullets).
+- `## Current focus` conforms to its template's shape (length, ordering, markers, optional `Scratch:` entries).
 - Each confirmed lift is appended to its destination file with a `Source:` backlink where the destination's template carries one.
 - Table contents are unchanged unless the user explicitly accepted a row-discipline cleanup surfaced in step 5.
-- For the auto-trigger entry: control returns to `procedures/section-archive.md` step 5c with the focus block stripped of all liftable lines — 5c then proceeds with its three-case rewrite.
+- For the auto-trigger entry: control returns to `procedures/section-archive.md` step 5c with the focus block stripped of all liftable lines — 5c then proceeds with its three-case rewrite. Step 4 (rewrite) and step 5 (table-drift) did not run.

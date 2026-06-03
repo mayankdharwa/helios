@@ -6,6 +6,8 @@
 
 <2–3 line state summary of the actively-worked section: which test/code aspect is open, what was last touched. Points at testing/code-review docs; does not restate substance.>
 
+Scratch: <transient context the user consciously parked here — one line, no rationale>  <!-- optional; up to 2 single-line `Scratch:` entries (stacked, one per line); written by procedures/checkpoint.md or by hand. Omit the line(s) entirely when empty. -->
+
 Paused: <§X — BLOCKED by Q<N>>, <§Y — BLOCKED by Q<M>>  <!-- omit the whole line when nothing is paused -->
 
 Next up: <next concrete intra-section step>.
