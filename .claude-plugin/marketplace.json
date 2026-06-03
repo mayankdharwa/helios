@@ -1,0 +1,14 @@
+{
+  "name": "helios",
+  "description": "Catalog of Claude Code plugins.",
+  "owner": {
+    "name": "mayankdharwa"
+  },
+  "plugins": [
+    {
+      "name": "io",
+      "source": "./io",
+      "description": "Explore → plan → build workflow for backend features. `develop-feature` for multi-day, multi-topic features; `develop-mini-feature` for ~day-scale, 1–2 area features with a one-way graduation path between them."
+    }
+  ]
+}

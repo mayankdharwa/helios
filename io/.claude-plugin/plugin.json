@@ -1,0 +1,5 @@
+{
+  "name": "io",
+  "version": "0.6.0",
+  "description": "Explore → plan → build workflow for backend features. `develop-feature` for multi-day, multi-topic features; `develop-mini-feature` for ~day-scale, 1–2 area features with a one-way graduation path between them."
+}
