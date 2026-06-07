@@ -64,6 +64,7 @@ If `PLAN.md` is malformed or unreadable, surface and ask. Do not guess.
 - Start a new mini feature / no feature dir exists → `procedures/start.md`
 - User says "approach is settled" / "start building" / "all done" → `procedures/advance.md`
 - Inline decision feels course-altering and the user agrees → `procedures/lift.md` (immediate-lift path)
+- Newer decision replaces an older one in `DECISIONS.md` / mark `#M` superseded by `#N` → `procedures/supersede.md`
 - Build checklist fully ticked, user opts into review → `procedures/review.md` (Path A: Coding Agent)
 - Invoked with `args="review"` → `procedures/review.md` (Path B: Review Agent)
 - Graduation trigger fires (3rd exploration topic, oversized checklist, cross-feature decision, oversized review) → `procedures/graduate.md`
@@ -108,7 +109,7 @@ Canonical reference: `io:develop-feature/reference/issue-routing.md`.
 - `OBJECTIVE.md` — confirm with user before any edit after `start.md`.
 - `PLAN.md` — Coding Agent edits freely.
 - `OPEN-QUESTIONS.md` — Coding Agent adds entries freely; resolving requires user confirmation. Shape on creation: `io:develop-feature/templates/open-questions.md`.
-- `DECISIONS.md` — Coding Agent appends new entries via `lift.md` only; never rewrites existing entries.
+- `DECISIONS.md` — Coding Agent appends new entries via `lift.md` only; never rewrites existing entries. The single permitted edits to existing entries are the supersession markers added by `procedures/supersede.md` (the `*Superseded by #N — YYYY-MM-DD*` line on the older entry and the `**Supersedes:** #M[, …]` line on the newer one); the original `Decision:` / `Why:` / `Implications:` / `Source:` of every touched entry stay intact.
 - `REVIEW.md` — Review Agent owns the file. Coding Agent appends only `> **Coding Agent response**` blocks under findings (shape: `io:develop-feature/reference/doc-ownership.md`).
 
 Lifecycle moves (graduate's `git rm` of `PLAN.md` and `REVIEW.md`) are exempt from ownership rules — `procedures/graduate.md` performs them.
@@ -120,6 +121,7 @@ procedures/
   start.md     — bootstrap a feature dir
   advance.md   — phase transition + lift sweep
   lift.md      — append one decision to DECISIONS.md
+  supersede.md — mark an older DECISIONS entry superseded by a newer one
   review.md    — opt-in review (Path A: Coding Agent; Path B: Review Agent)
   graduate.md  — migrate to io:develop-feature shape
 templates/

@@ -17,7 +17,7 @@ Read before editing any tracked file. Edits land per the role and the path.
 
   Review Agent reads the response, verifies against the code, and writes the tag. If the Review Agent disagrees with a refusal, it leaves the item untagged and appends a follow-up finding — the section cannot archive until every item carries a tag, which forces resolution.
 - `OPEN-QUESTIONS.md` — add entries freely. Resolving requires user confirmation.
-- `spec/*`, `OBJECTIVE.md`, `DECISIONS.md`, `MIGRATION-CHECKLIST.md`, `TECH-DEBT.md`, `references/*` — confirm with user before any edit.
+- `spec/*`, `OBJECTIVE.md`, `DECISIONS.md`, `MIGRATION-CHECKLIST.md`, `TECH-DEBT.md`, `references/*` — confirm with user before any edit. For `DECISIONS.md`: existing entries are otherwise append-only — the only permitted in-place edits to a prior entry are the supersession markers added by `procedures/supersede.md` (the `*Superseded by #N — YYYY-MM-DD*` line on the older entry and the `**Supersedes:** #M[, …]` line on the newer one); `Decision:` / `Why:` / `Implications:` / `Source:` on every touched entry stay intact.
 - `_archive/*` — never edit. Only move files in.
 
 ## Source code (outside `docs/<feature>/`)

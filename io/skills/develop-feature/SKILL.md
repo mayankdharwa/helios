@@ -124,6 +124,7 @@ If `PROGRESS.md` is malformed or unreadable, surface and ask. Do not guess.
 - Add migration item / close `<id>` → `procedures/migration-checklist.md`
 - Add tech-debt item / close `TD<N>` → `procedures/tech-debt.md`
 - Decision affects multiple features → `procedures/cross-feature-lift.md`
+- Newer decision replaces an older one / mark `#M` superseded by `#N` → `procedures/supersede.md`
 - Is the project done / final gate check → `procedures/project-done-check.md`
 - An issue surfaced mid-work / unclear where to log it → `reference/issue-routing.md`
 

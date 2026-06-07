@@ -24,7 +24,11 @@ Expect roughly 10–20% of callouts / tags to qualify.
 
 The inline `Review comment` callout (or `decision:` tag) **stays in the source doc** — it carries the full context. The `DECISIONS.md` entry carries the distilled "decision + why" plus a backlink to the source. One-way pointer: `DECISIONS.md` → inline. The central file is greppable; the inline file is readable.
 
-Numbering: per-feature monotonic `#N` for entries in feature-level `DECISIONS.md`. Repo-root `docs/DECISIONS.md` has its own independent counter (see `procedures/cross-feature-lift.md`).
+Numbering: per-feature monotonic `#N` for entries in feature-level `DECISIONS.md`. Repo-root `docs/DECISIONS.md` has its own independent counter (see `procedures/cross-feature-lift.md`). Numbers never reuse, even when a later decision reverses an earlier one — see supersession below.
+
+## Supersession
+
+When a later decision replaces a prior one, leave the prior entry in place and mark it via `procedures/supersede.md`. The older entry keeps its number, its rationale, and its `Source:` backlink; a `*Superseded by #N — YYYY-MM-DD*` marker is appended below its meta line, and the newer entry carries a `**Supersedes:** #M[, …]` line above its `**Decision:**`. Distinguish supersession (older decision no longer holds at all) from extension or refinement (older still partly holds — record as a new entry whose `Why:` references the prior, not as supersession).
 
 ## Cross-feature scope
 
