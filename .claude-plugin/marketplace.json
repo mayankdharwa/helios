@@ -1,5 +1,6 @@
 {
   "name": "helios",
+  "version": "0.2.0",
   "description": "Catalog of Claude Code plugins.",
   "owner": {
     "name": "mayankdharwa"
@@ -9,6 +10,11 @@
       "name": "io",
       "source": "./io",
       "description": "Explore → plan → build workflow for backend features. `develop-feature` for multi-day, multi-topic features; `develop-mini-feature` for ~day-scale, 1–2 area features with a one-way graduation path between them."
+    },
+    {
+      "name": "karpathy",
+      "source": "./karpathy",
+      "description": "Behavioral guidelines to reduce common LLM coding mistakes — surface assumptions and inconsistencies, keep code minimal, make surgical changes."
     }
   ]
 }

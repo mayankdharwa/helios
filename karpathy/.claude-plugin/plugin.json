@@ -1,0 +1,6 @@
+{
+  "name": "karpathy",
+  "version": "0.1.0",
+  "description": "Behavioral guidelines to reduce common LLM coding mistakes — surface assumptions and inconsistencies, keep code minimal, make surgical changes.",
+  "license": "MIT"
+}
